@@ -1,7 +1,5 @@
 package com.jcolom.kotlin_arch.presentation.view.base
 
-import org.greenrobot.eventbus.EventBus
-
 abstract class BasePresenter : Presenter {
 
 //    private var baseView: BaseView? = null
@@ -18,22 +16,11 @@ abstract class BasePresenter : Presenter {
         onStop()
     }
 
-    /**
-     * On start the presenter this method will register the object to the Bus.
-     */
     override fun onStart() {
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this)
-        }
+
     }
 
-    /**
-     * On stop the presenter this method will unregister the object to the Bus.
-     */
     override fun onStop() {
-        if (EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().unregister(this)
-        }
     }
 
 

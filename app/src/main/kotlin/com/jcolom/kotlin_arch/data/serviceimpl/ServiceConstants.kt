@@ -6,6 +6,6 @@ package com.jcolom.kotlin_arch.data.serviceimpl
  */
 class ServiceConstants {
     companion object {
-        const val GET_VERSION = "/versio"
+        const val GET_VERSION = "/versio-rx"
     }
 }

@@ -35,8 +35,8 @@ ext {
     base_url_pro = 'http://demo3543207.mockable.io'
 
     //Flavors
-    appNameDev = 'DEV Kotlin Arch'
-    appNamePro = 'Kotlin Arch'
+    appNameDev = 'DEV KotlinRx Arch'
+    appNamePro = 'KotlinRx Arch'
 
     //app id for market
     applicationIdDev = 'com.jcolom.kotlinarch.dev'

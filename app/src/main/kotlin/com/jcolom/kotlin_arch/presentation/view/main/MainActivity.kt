@@ -1,5 +1,7 @@
 package com.jcolom.kotlin_arch.presentation.view.main
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -37,5 +39,9 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
     override fun onLoadedResponse(version: String?) {
         Toast.makeText(this, version, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onConnectionError() {
+        Toast.makeText(this, "Connection error!", Toast.LENGTH_LONG).show()
     }
 }

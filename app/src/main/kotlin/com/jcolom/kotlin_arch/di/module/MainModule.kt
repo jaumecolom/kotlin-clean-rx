@@ -31,8 +31,8 @@ class MainModule(private val view: MainPresenter.View) {
     }
 
     @Provides
-    internal fun providesDoCommandsMain(executor: Executor, mainRepo: MainRepoImpl): DoCommandsMain {
-        return DoCommandsMainImpl(executor, mainRepo)
+    internal fun providesDoCommandsMain(mainRepo: MainRepoImpl): DoCommandsMain {
+        return DoCommandsMainImpl(mainRepo)
     }
 
     @Provides

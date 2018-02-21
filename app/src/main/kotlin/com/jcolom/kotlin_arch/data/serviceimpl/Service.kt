@@ -1,8 +1,8 @@
 package com.jcolom.kotlin_arch.data.serviceimpl
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
-import retrofit2.Call
 import retrofit2.http.GET
+import rx.Observable
 
 /*
  *   Nortia Corporation SL
@@ -10,5 +10,5 @@ import retrofit2.http.GET
  */
 interface Service {
     @get:GET(ServiceConstants.GET_VERSION)
-    val version: Call<AppVersion>
+    val version: Observable<AppVersion>
 }

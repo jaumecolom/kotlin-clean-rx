@@ -8,6 +8,7 @@ interface MainPresenter {
 
     interface View {
         fun onLoadedResponse(version: String?)
+        fun onConnectionError()
     }
 
     interface Presenter{

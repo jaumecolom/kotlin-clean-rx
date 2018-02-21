@@ -1,34 +1,34 @@
 package com.jcolom.kotlin_arch.presentation.view.main
 
 import com.jcolom.kotlin_arch.domain.DoCommandsMain
-import com.jcolom.kotlin_arch.domain.MainUseCases
+import com.jcolom.kotlin_arch.domain.exceptions.BaseError
+import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
+import com.jcolom.kotlin_arch.domain.exceptions.ConnectionError
+import com.jcolom.kotlin_arch.domain.model.AppVersion
 import com.jcolom.kotlin_arch.presentation.view.base.BasePresenter
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
 /*
  *   Nortia Corporation SL
  *   Copyright (C) 2018  -  All Rights Reserved
  */
-class MainPresenterImpl : BasePresenter, MainPresenter.Presenter {
+class MainPresenterImpl @Inject constructor(var doCommandsMain: DoCommandsMain, var view: MainPresenter.View) : BasePresenter(), MainPresenter.Presenter, PresenterCallback<AppVersion, BaseError> {
 
-    var view: MainPresenter.View
-    var useCases: MainUseCases
-
-    @Inject constructor(useCases: MainUseCases, view: MainPresenter.View) {
-        this.view = view
-        this.useCases = useCases
+    init {
+        this.doCommandsMain.setCallback(this)
     }
 
     override fun doRequest() {
-        useCases.doCommandsMain.execute(null, DoCommandsMain.Event())
+        doCommandsMain.getVersion()
     }
 
-    @SuppressWarnings("unused")
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onEventMainThread(event: DoCommandsMain.Event) {
-        view.onLoadedResponse(event.appVersion!!.getVersion())
+    override fun onSuccess(response: AppVersion) {
+        view.onLoadedResponse(response.getVersion())
     }
 
+    override fun onError(error: BaseError) {
+        if(error is ConnectionError) {
+            view.onConnectionError()
+        }
+    }
 }

@@ -1,8 +1,6 @@
 package com.jcolom.kotlin_arch.domain.exceptions
 
-import android.content.Context
-import android.text.TextUtils
-import com.jcolom.kotlin_arch.R
+import java.net.UnknownHostException
 
 /*
  *   Nortia Corporation SL
@@ -10,25 +8,13 @@ import com.jcolom.kotlin_arch.R
  */
 object ThrowableType {
 
-    val DEFAULT_ERROR = "DEFAULT_ERROR"
+    fun parseError(t: Throwable?): BaseError {
+        var error = BaseError()
 
-
-    fun parseError(context: Context, message: String): String {
-        var errorParsed: String? = null
-
-        if (!TextUtils.isEmpty(message)) {
-            when (message) {
-                DEFAULT_ERROR -> errorParsed = context.getString(R.string.error_default)
-            }
-        } else {
-            errorParsed = context.getString(R.string.error_default)
+        when (t) {
+            is UnknownHostException -> error = ConnectionError()
+//          is ...
         }
-
-        return if (errorParsed == null) {
-            message
-        } else {
-            errorParsed
-        }
-
+        return error
     }
 }
