@@ -1,8 +1,8 @@
 package com.jcolom.kotlin_arch.data.serviceimpl
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
+import io.reactivex.Observable
 import retrofit2.http.GET
-import rx.Observable
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer

@@ -6,7 +6,9 @@ import com.jcolom.kotlin_arch.domain.command.base.RxExecutor
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
 import com.jcolom.kotlin_arch.domain.repo.MainRepo
 import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
-import rx.Observable
+import io.reactivex.Observable
+import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function
 import javax.inject.Inject
 
 /*
@@ -44,13 +46,19 @@ constructor(protected var mainRepo: MainRepo) : BaseDoCommandImpl(), DoCommandsM
     }
 
     override fun getListsConcatenate() {
-        RxExecutor(presenterCallback).execute(Observable.zip(mainRepo.getListOne(), mainRepo.getListTwo(),{a,b -> joinLists(a,b)}))
+        RxExecutor(presenterCallback).execute(Observable.zip<List<String>, List<String>, List<String>>(
+                mainRepo.getListOne(),
+                mainRepo.getListTwo(),
+                BiFunction<List<String>, List<String>,  List<String>>
+                { listOne, listTwo -> joinLists(listOne, listTwo)}))
     }
 
     override fun getListsMerged() {
-        RxExecutor(presenterCallback).execute(Observable.zip(mainRepo.getListOne(), mainRepo.getListTwo(), { a, b ->
-            mergeLists(a, b)
-        }))
+        RxExecutor(presenterCallback).execute(Observable.zip<List<String>, List<String>, List<String>>(
+                mainRepo.getListOne(),
+                mainRepo.getListTwo(),
+                BiFunction<List<String>, List<String>,  List<String>>
+                { listOne, listTwo -> mergeLists(listOne, listTwo)}))
     }
 
     private fun joinLists(a: List<String>?, b: List<String>?): List<String> {

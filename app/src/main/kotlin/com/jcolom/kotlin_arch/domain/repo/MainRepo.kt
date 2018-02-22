@@ -1,7 +1,7 @@
 package com.jcolom.kotlin_arch.domain.repo
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
-import rx.Observable
+import io.reactivex.Observable
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer

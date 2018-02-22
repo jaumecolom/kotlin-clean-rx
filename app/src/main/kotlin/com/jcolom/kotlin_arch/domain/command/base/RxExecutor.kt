@@ -3,9 +3,10 @@ package com.jcolom.kotlin_arch.domain.command.base
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
 import com.jcolom.kotlin_arch.domain.exceptions.ThrowableType
 import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
-import rx.Observable
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer
@@ -37,17 +38,18 @@ class RxExecutor : BaseSubscriber {
                 .subscribe(this)
     }
 
-    override fun onNext(response: Any?) {
-        presenterCallback.onSuccess(response as Any)
+    override fun onNext(t: Any) {
+        presenterCallback.onSuccess(t)
     }
 
-    override fun onCompleted() {
-        // Do nothing
-    }
-
-    override fun onError(e: Throwable?) {
+    override fun onError(e: Throwable) {
         presenterCallback.onError(ThrowableType.parseError(e))
     }
+
+    override fun onComplete() {
+    }
+
+    override fun onSubscribe(d: Disposable) {
+    }
+
 }
-
-

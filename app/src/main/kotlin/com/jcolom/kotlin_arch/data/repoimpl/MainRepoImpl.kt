@@ -3,7 +3,7 @@ package com.jcolom.kotlin_arch.data.repoimpl
 import com.jcolom.kotlin_arch.domain.model.AppVersion
 import com.jcolom.kotlin_arch.domain.repo.ApiRepo
 import com.jcolom.kotlin_arch.domain.repo.MainRepo
-import rx.Observable
+import io.reactivex.Observable
 import javax.inject.Inject
 
 /*

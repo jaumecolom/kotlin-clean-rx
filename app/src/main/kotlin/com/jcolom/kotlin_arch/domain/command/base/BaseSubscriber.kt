@@ -1,6 +1,9 @@
 package com.jcolom.kotlin_arch.domain.command.base
 
-import rx.Subscriber
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer
@@ -17,13 +20,16 @@ import rx.Subscriber
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-open class BaseSubscriber : Subscriber<Any>(){
-    override fun onNext(t: Any?) {
+open class BaseSubscriber : Observer<Any>{
+    override fun onComplete() {
     }
 
-    override fun onCompleted() {
+    override fun onNext(t: Any) {
     }
 
-    override fun onError(e: Throwable?) {
+    override fun onError(e: Throwable) {
+    }
+
+    override fun onSubscribe(d: Disposable) {
     }
 }
