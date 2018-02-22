@@ -8,4 +8,8 @@ import com.jcolom.kotlin_arch.domain.command.base.BaseDoCommand
  */
 interface DoCommandsMain : BaseDoCommand {
     fun getVersion()
+    fun getListOne()
+    fun getListTwo()
+    fun getListsConcatenate()
+    fun getListsMerged()
 }

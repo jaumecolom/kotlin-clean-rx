@@ -11,4 +11,10 @@ import rx.Observable
 interface Service {
     @get:GET(ServiceConstants.GET_VERSION)
     val version: Observable<AppVersion>
+
+    @get:GET(ServiceConstants.GET_LIST_ONE)
+    val listone: Observable<List<String>>
+
+    @get:GET(ServiceConstants.GET_LIST_TWO)
+    val listtwo: Observable<List<String>>
 }

@@ -11,19 +11,24 @@ import rx.schedulers.Schedulers
  *   Nortia Corporation SL
  *   Copyright (C) 2018  -  All Rights Reserved
  */
-open class RxExecutor : BaseSubscriber {
+open class RxExecutorOperable : BaseSubscriber {
 
     private var presenterCallback: PresenterCallback<Any, BaseError>
+    private var observable: Observable<*>? = null
 
-    constructor(presenterCallback: PresenterCallback<*, BaseError>) {
+    constructor(presenterCallback: PresenterCallback<*, BaseError>, observable: Observable<*>) {
         this.presenterCallback = presenterCallback as PresenterCallback<Any, BaseError>
+        this.observable = observable
     }
 
-    fun execute(observable: Observable<*>) {
-        observable
+    fun getObservable(): Observable<*> {
+        return observable!!
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this)
+    }
+
+    fun execute() {
+        getObservable()?.subscribe(this)
     }
 
     override fun onNext(response: Any?) {
@@ -38,5 +43,3 @@ open class RxExecutor : BaseSubscriber {
         presenterCallback.onError(ThrowableType.parseError(e))
     }
 }
-
-

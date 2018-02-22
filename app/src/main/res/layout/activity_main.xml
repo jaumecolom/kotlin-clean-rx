@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,9 +11,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GET VERSION!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/button_getlistone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET LIST ONE"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_getversion"/>
+
+    <Button
+        android:id="@+id/button_getlisttwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET LIST TWO"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_getlistone"/>
+
+    <Button
+        android:id="@+id/button_gettwolists_concatenate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET LISTS CONCATENATE"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_getlisttwo"/>
+
+    <Button
+        android:id="@+id/button_gettwolists_merged"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET LISTS MERGED"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_gettwolists_concatenate"/>
+
+    <Button
+        android:id="@+id/button_allrequests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DO ALL REQUESTS"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_gettwolists_merged"/>
+
+    <Button
+        android:id="@+id/button_get_results"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET NUMBER OF RESULTS"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_allrequests"/>
+
+</RelativeLayout>

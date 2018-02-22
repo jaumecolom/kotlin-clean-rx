@@ -6,7 +6,12 @@ package com.jcolom.kotlin_arch.domain.model
  */
 class AppVersion {
     private var version: String? = null
+
     fun getVersion(): String? {
         return version
+    }
+
+    fun setVersion(value: String?) {
+        this.version = value
     }
 }

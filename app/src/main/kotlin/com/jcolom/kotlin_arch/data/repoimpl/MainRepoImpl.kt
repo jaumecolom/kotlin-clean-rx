@@ -16,4 +16,12 @@ class MainRepoImpl @Inject constructor(val apiRepo: ApiRepo) : MainRepo {
         return apiRepo.getApiService().version
     }
 
+    override fun getListOne(): Observable<List<String>> {
+        return apiRepo.getApiService().listone
+    }
+
+    override fun getListTwo(): Observable<List<String>> {
+        return apiRepo.getApiService().listtwo
+    }
+
 }

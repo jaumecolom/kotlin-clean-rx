@@ -9,9 +9,14 @@ interface MainPresenter {
     interface View {
         fun onLoadedResponse(version: String?)
         fun onConnectionError()
+        fun onListLoaded(response: List<String>)
     }
 
     interface Presenter{
-        fun doRequest()
+        fun getVersion()
+        fun getListOne()
+        fun getListTwo()
+        fun getListsConcatenated()
+        fun getListsMerged()
     }
 }

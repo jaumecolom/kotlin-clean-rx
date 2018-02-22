@@ -9,4 +9,8 @@ import rx.Observable
  */
 interface MainRepo {
     fun getMainInfo() : Observable<AppVersion>
+
+    fun getListOne() : Observable<List<String>>
+
+    fun getListTwo() : Observable<List<String>>
 }
