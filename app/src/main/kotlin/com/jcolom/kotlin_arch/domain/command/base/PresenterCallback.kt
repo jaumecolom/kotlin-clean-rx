@@ -1,6 +1,4 @@
-package com.jcolom.kotlin_arch.domain.exceptions
-
-import java.net.UnknownHostException
+package com.jcolom.kotlin_arch.domain.command.base
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer
@@ -17,16 +15,9 @@ import java.net.UnknownHostException
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-object ThrowableType {
+interface PresenterCallback<BaseResponse, BaseError> {
 
-    fun parseError(t: Throwable?): BaseError {
-        var error = BaseError()
+    fun onSuccess(response: BaseResponse)
 
-        when (t) {
-            is UnknownHostException -> error = ConnectionError()
-            // ADD YOUR OWN EXCEPTIONS
-//          is ...
-        }
-        return error
-    }
+    fun onError(error: BaseError)
 }

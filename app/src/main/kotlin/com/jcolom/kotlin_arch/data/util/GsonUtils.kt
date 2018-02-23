@@ -23,11 +23,6 @@ import java.lang.reflect.Type
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @author afebrer
- * @since 09/08/16
- */
 class GsonUtils private constructor() {
 
     private val gson = Gson()

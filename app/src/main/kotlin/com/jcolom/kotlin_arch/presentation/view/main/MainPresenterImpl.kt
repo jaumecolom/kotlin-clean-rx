@@ -57,9 +57,9 @@ class MainPresenterImpl @Inject constructor(var doCommandsMain: DoCommandsMain, 
 
     override fun onSuccess(response: BaseResponse) {
         if(response is AppVersion){
-            view.onLoadedResponse(response.getVersion())
+            view.onLoadedResponse(response.version)
         }else if(response is OwnList){
-            view.onListLoaded(response.getList()!!)
+            view.onListLoaded(response.ownList)
         }
     }
 

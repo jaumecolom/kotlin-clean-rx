@@ -59,6 +59,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
             presenter.getListTwo()
             presenter.getListsConcatenated()
             presenter.getListsMerged()
+            presenter.getConcatenatedCalls()
         }
         buttonGetResults.setOnClickListener{
             Toast.makeText(this@MainActivity, results.toString(), Toast.LENGTH_LONG).show()

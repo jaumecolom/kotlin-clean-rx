@@ -31,22 +31,4 @@ class ServiceModule {
     internal fun providesApiRepo(): ApiRepo {
         return ApiRepoImpl(serviceManager = ServiceManagerImpl(), serviceGenerator = ServiceGeneratorImpl())
     }
-
-//    @Provides
-//    @Singleton
-//    internal fun providesServiceManager(serviceManager: ServiceManagerImpl): ServiceManager {
-//        return serviceManager
-//    }
-//
-//    @Provides
-//    @Singleton
-//    internal fun providesServiceGenerator(serviceGenerator: ServiceGeneratorImpl): ServiceGenerator {
-//        return serviceGenerator
-//    }
-
-//    @Provides
-//    @Singleton
-//    internal fun providesTokenRepo(tokenRepo: TokenRepoImpl): TokenRepo {
-//        return tokenRepo
-//    }
 }

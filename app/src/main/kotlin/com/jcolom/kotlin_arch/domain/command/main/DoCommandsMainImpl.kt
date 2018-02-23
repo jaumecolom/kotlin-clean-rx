@@ -68,15 +68,15 @@ constructor(protected var mainRepo: MainRepo) : BaseDoCommandImpl(), DoCommandsM
     }
 
     private fun joinLists(a: OwnList, b: OwnList): OwnList {
-        var listOne = ArrayList<String>(a.getList())
-        var listTwo = ArrayList<String>(b.getList())
+        var listOne = ArrayList<String>(a.ownList)
+        var listTwo = ArrayList<String>(b.ownList)
         listOne.addAll(listTwo)
         return OwnList(listOne)
     }
 
     private fun mergeLists(a: OwnList, b: OwnList): OwnList {
-        var listOne = ArrayList<String>(a.getList())
-        var listTwo = ArrayList<String>(b.getList())
+        var listOne = ArrayList<String>(a.ownList)
+        var listTwo = ArrayList<String>(b.ownList)
         var mergedList = ArrayList<String>()
         var index = 0
         var merged = false

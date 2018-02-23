@@ -17,14 +17,4 @@ import com.jcolom.kotlin_arch.domain.command.base.BaseResponse
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class AppVersion : BaseResponse() {
-    private var version: String? = null
-
-    fun getVersion(): String? {
-        return version
-    }
-
-    fun setVersion(value: String?) {
-        this.version = value
-    }
-}
+class AppVersion(var version: String) : BaseResponse()
