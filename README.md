@@ -1,6 +1,6 @@
 # Kotlin-Clean-RX
 
-I created this project to adapt clean architecture with Kotlin. I am developing apps following this project as a template, and I amb obtaining great results. Feel free to contribute, or comment on any improvement :)
+I created this project to adapt clean architecture with Kotlin. I am developing apps following this project as a template, and I am obtaining great results. Feel free to contribute, or comment on any improvement :)
 
 Used libraries:
 * [RxJava & RxAndroid][1]
