@@ -1,0 +1,17 @@
+language android
+jdk oraclejdk8
+
+env
+  global
+    - ADB_INSTALL_TIMEOUT=8
+
+android
+  components
+     - tools
+     - platform-tools
+     - build-tools-27.0.2
+     - android-27
+     - extra-android-support
+     - extra-google-google_play_services
+     - extra-google-m2repository
+     - extra-android-m2repository
