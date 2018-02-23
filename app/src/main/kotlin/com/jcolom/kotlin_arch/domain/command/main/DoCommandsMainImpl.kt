@@ -2,13 +2,13 @@ package com.jcolom.kotlin_arch.domain.command.main
 
 import com.jcolom.kotlin_arch.domain.DoCommandsMain
 import com.jcolom.kotlin_arch.domain.command.base.BaseDoCommandImpl
+import com.jcolom.kotlin_arch.domain.command.base.PresenterCallback
 import com.jcolom.kotlin_arch.domain.command.base.RxExecutor
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
+import com.jcolom.kotlin_arch.domain.model.OwnList
 import com.jcolom.kotlin_arch.domain.repo.MainRepo
-import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
-import io.reactivex.functions.Function
 import javax.inject.Inject
 
 /*
@@ -38,39 +38,45 @@ constructor(protected var mainRepo: MainRepo) : BaseDoCommandImpl(), DoCommandsM
     }
 
     override fun getListOne() {
-        RxExecutor(presenterCallback).execute(mainRepo.getListOne())
+        RxExecutor(presenterCallback).execute(mainRepo.getListOne().map { a -> OwnList(a) })
     }
 
     override fun getListTwo() {
-        RxExecutor(presenterCallback).execute(mainRepo.getListTwo())
+        RxExecutor(presenterCallback).execute(mainRepo.getListTwo().map { a -> OwnList(a) })
     }
 
     override fun getListsConcatenate() {
-        RxExecutor(presenterCallback).execute(Observable.zip<List<String>, List<String>, List<String>>(
-                mainRepo.getListOne(),
-                mainRepo.getListTwo(),
-                BiFunction<List<String>, List<String>,  List<String>>
-                { listOne, listTwo -> joinLists(listOne, listTwo)}))
+        RxExecutor(presenterCallback).execute(Observable.zip<OwnList, OwnList, OwnList>(
+                mainRepo.getListOne().map { a -> OwnList(a) },
+                mainRepo.getListTwo().map { b -> OwnList(b) },
+                BiFunction<OwnList, OwnList, OwnList>
+                { listOne, listTwo -> joinLists(listOne, listTwo) }))
     }
 
     override fun getListsMerged() {
-        RxExecutor(presenterCallback).execute(Observable.zip<List<String>, List<String>, List<String>>(
-                mainRepo.getListOne(),
-                mainRepo.getListTwo(),
-                BiFunction<List<String>, List<String>,  List<String>>
-                { listOne, listTwo -> mergeLists(listOne, listTwo)}))
+        RxExecutor(presenterCallback).execute(Observable.zip<OwnList, OwnList, OwnList>(
+                mainRepo.getListOne().map { a -> OwnList(a) },
+                mainRepo.getListTwo().map { b -> OwnList(b) },
+                BiFunction<OwnList, OwnList, OwnList>
+                { listOne, listTwo -> mergeLists(listOne, listTwo) }))
     }
 
-    private fun joinLists(a: List<String>?, b: List<String>?): List<String> {
-        var listOne = ArrayList<String>(a)
-        var listTwo = ArrayList<String>(b)
+    override fun getConcatenatedCalls() {
+        RxExecutor(presenterCallback).execute(mainRepo.getListOne()
+                        .map { list -> list.get(0) }
+                        .flatMap { firstValue -> mainRepo.getSubListOf(firstValue) }.map { a -> OwnList(a) })
+    }
+
+    private fun joinLists(a: OwnList, b: OwnList): OwnList {
+        var listOne = ArrayList<String>(a.getList())
+        var listTwo = ArrayList<String>(b.getList())
         listOne.addAll(listTwo)
-        return listOne
+        return OwnList(listOne)
     }
 
-    private fun mergeLists(a: List<String>?, b: List<String>?): List<String> {
-        var listOne = ArrayList<String>(a)
-        var listTwo = ArrayList<String>(b)
+    private fun mergeLists(a: OwnList, b: OwnList): OwnList {
+        var listOne = ArrayList<String>(a.getList())
+        var listTwo = ArrayList<String>(b.getList())
         var mergedList = ArrayList<String>()
         var index = 0
         var merged = false
@@ -86,6 +92,6 @@ constructor(protected var mainRepo: MainRepo) : BaseDoCommandImpl(), DoCommandsM
             }
             index++
         }
-        return mergedList
+        return OwnList(mergedList)
     }
 }

@@ -20,5 +20,6 @@ class ServiceConstants {
         const val GET_VERSION = "/versio-rx"
         const val GET_LIST_ONE = "/listone"
         const val GET_LIST_TWO = "/listtwo"
+        const val GET_SUBLIST_OF = "sublistof/"
     }
 }

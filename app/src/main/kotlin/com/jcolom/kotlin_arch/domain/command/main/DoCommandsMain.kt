@@ -23,4 +23,5 @@ interface DoCommandsMain : BaseDoCommand {
     fun getListTwo()
     fun getListsConcatenate()
     fun getListsMerged()
+    fun getConcatenatedCalls()
 }

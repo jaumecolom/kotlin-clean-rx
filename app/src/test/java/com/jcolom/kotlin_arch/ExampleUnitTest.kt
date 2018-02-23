@@ -2,13 +2,12 @@ package com.jcolom.kotlin_arch
 
 import com.jcolom.kotlin_arch.domain.command.main.DoCommandsMainImpl
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
-import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
+import com.jcolom.kotlin_arch.domain.command.base.PresenterCallback
+import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
-import org.junit.BeforeClass
 import org.junit.Test
 import org.mockito.Mock
-import rx.android.plugins.RxAndroidPlugins
-import rx.plugins.RxJavaPlugins
 
 
 /**
@@ -21,25 +20,9 @@ class ExampleUnitTest : PresenterCallback<List<String>, BaseError> {
     @Mock
     private lateinit var doCommandsMainImpl: DoCommandsMainImpl
 
-    @BeforeClass
-    fun setUpRxSchedulers() {
-        RxJavaPlugins.setInitIoSchedulerHandler { immediate }
-        RxJavaPlugins.setInitComputationSchedulerHandler { immediate }
-        RxJavaPlugins.setInitNewThreadSchedulerHandler { immediate }
-        RxJavaPlugins.setInitSingleSchedulerHandler { immediate }
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { immediate }
-
-        try {
-            base.evaluate()
-        } finally {
-            RxJavaPlugins.reset()
-            RxAndroidPlugins.reset()
-        }
-    }
-
     @Test
     fun addition_isCorrect() {
-
+        RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
         doCommandsMainImpl.setCallback(this)
         doCommandsMainImpl.getListOne()
     }

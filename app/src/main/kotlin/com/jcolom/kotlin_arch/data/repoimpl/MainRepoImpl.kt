@@ -1,6 +1,7 @@
 package com.jcolom.kotlin_arch.data.repoimpl
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
+import com.jcolom.kotlin_arch.domain.model.OwnList
 import com.jcolom.kotlin_arch.domain.repo.ApiRepo
 import com.jcolom.kotlin_arch.domain.repo.MainRepo
 import io.reactivex.Observable
@@ -33,6 +34,10 @@ class MainRepoImpl @Inject constructor(val apiRepo: ApiRepo) : MainRepo {
 
     override fun getListTwo(): Observable<List<String>> {
         return apiRepo.getApiService().listtwo
+    }
+
+    override fun getSubListOf(value: String): Observable<List<String>> {
+        return apiRepo.getApiService().getSubListOf()
     }
 
 }

@@ -1,7 +1,6 @@
 package com.jcolom.kotlin_arch.domain.command.base
 
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
-import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer

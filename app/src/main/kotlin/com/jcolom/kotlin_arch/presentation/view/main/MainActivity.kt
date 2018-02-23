@@ -38,6 +38,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     private val getListTwoButton by bind<Button>(R.id.button_getlisttwo)
     private val getListConcatenateButton by bind<Button>(R.id.button_gettwolists_concatenate)
     private val getListMergedButton by bind<Button>(R.id.button_gettwolists_merged)
+    private val buttonConcatenatedCalls by bind<Button>(R.id.button_concatenated_calls)
     private val buttonAllRequests by bind<Button>(R.id.button_allrequests)
     private val buttonGetResults by bind<Button>(R.id.button_get_results)
     var results = 0
@@ -51,6 +52,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
         getListTwoButton.setOnClickListener { presenter.getListTwo() }
         getListConcatenateButton.setOnClickListener { presenter.getListsConcatenated() }
         getListMergedButton.setOnClickListener { presenter.getListsMerged() }
+        buttonConcatenatedCalls.setOnClickListener{ presenter.getConcatenatedCalls() }
         buttonAllRequests.setOnClickListener{
             presenter.getVersion()
             presenter.getListOne()

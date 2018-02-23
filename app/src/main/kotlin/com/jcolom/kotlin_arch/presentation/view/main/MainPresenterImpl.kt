@@ -1,11 +1,13 @@
 package com.jcolom.kotlin_arch.presentation.view.main
 
 import com.jcolom.kotlin_arch.domain.DoCommandsMain
+import com.jcolom.kotlin_arch.domain.command.base.BaseResponse
+import com.jcolom.kotlin_arch.domain.command.base.PresenterCallback
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
 import com.jcolom.kotlin_arch.domain.exceptions.ConnectionError
 import com.jcolom.kotlin_arch.domain.model.AppVersion
+import com.jcolom.kotlin_arch.domain.model.OwnList
 import com.jcolom.kotlin_arch.presentation.view.base.BasePresenter
-import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
 import javax.inject.Inject
 
 /*
@@ -23,7 +25,7 @@ import javax.inject.Inject
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class MainPresenterImpl @Inject constructor(var doCommandsMain: DoCommandsMain, var view: MainPresenter.View) : BasePresenter(), MainPresenter.Presenter, PresenterCallback<Any, BaseError> {
+class MainPresenterImpl @Inject constructor(var doCommandsMain: DoCommandsMain, var view: MainPresenter.View) : BasePresenter(), MainPresenter.Presenter, PresenterCallback<BaseResponse, BaseError> {
 
     init {
         this.doCommandsMain.setCallback(this)
@@ -49,11 +51,15 @@ class MainPresenterImpl @Inject constructor(var doCommandsMain: DoCommandsMain, 
         doCommandsMain.getListsMerged()
     }
 
-    override fun onSuccess(response: Any) {
-        if (response is AppVersion) {
+    override fun getConcatenatedCalls() {
+        doCommandsMain.getConcatenatedCalls()
+    }
+
+    override fun onSuccess(response: BaseResponse) {
+        if(response is AppVersion){
             view.onLoadedResponse(response.getVersion())
-        } else if (response is List<*>) {
-            view.onListLoaded(response as List<String>)
+        }else if(response is OwnList){
+            view.onListLoaded(response.getList()!!)
         }
     }
 

@@ -1,6 +1,7 @@
 package com.jcolom.kotlin_arch.domain.repo
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
+import com.jcolom.kotlin_arch.domain.model.OwnList
 import io.reactivex.Observable
 
 /*
@@ -24,4 +25,6 @@ interface MainRepo {
     fun getListOne() : Observable<List<String>>
 
     fun getListTwo() : Observable<List<String>>
+
+    fun getSubListOf(value: String) : Observable<List<String>>
 }

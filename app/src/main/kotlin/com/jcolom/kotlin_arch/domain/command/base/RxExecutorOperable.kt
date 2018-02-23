@@ -2,7 +2,6 @@ package com.jcolom.kotlin_arch.domain.command.base
 
 import com.jcolom.kotlin_arch.domain.exceptions.BaseError
 import com.jcolom.kotlin_arch.domain.exceptions.ThrowableType
-import com.jcolom.kotlin_arch.presentation.view.base.PresenterCallback
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

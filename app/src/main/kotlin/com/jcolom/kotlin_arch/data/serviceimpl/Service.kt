@@ -1,8 +1,11 @@
 package com.jcolom.kotlin_arch.data.serviceimpl
 
 import com.jcolom.kotlin_arch.domain.model.AppVersion
+import com.jcolom.kotlin_arch.domain.model.OwnList
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer
@@ -28,4 +31,7 @@ interface Service {
 
     @get:GET(ServiceConstants.GET_LIST_TWO)
     val listtwo: Observable<List<String>>
+
+    @GET(ServiceConstants.GET_SUBLIST_OF)
+    fun getSubListOf(): Observable<List<String>>
 }

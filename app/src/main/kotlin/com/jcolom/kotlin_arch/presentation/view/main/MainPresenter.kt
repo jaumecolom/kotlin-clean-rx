@@ -29,5 +29,6 @@ interface MainPresenter {
         fun getListTwo()
         fun getListsConcatenated()
         fun getListsMerged()
+        fun getConcatenatedCalls()
     }
 }

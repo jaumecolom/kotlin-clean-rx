@@ -47,12 +47,20 @@
         android:layout_below="@+id/button_gettwolists_concatenate"/>
 
     <Button
+        android:id="@+id/button_concatenated_calls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DO CONCATENATED CALLS"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/button_gettwolists_merged"/>
+
+    <Button
         android:id="@+id/button_allrequests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DO ALL REQUESTS"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/button_gettwolists_merged"/>
+        android:layout_below="@+id/button_concatenated_calls"/>
 
     <Button
         android:id="@+id/button_get_results"

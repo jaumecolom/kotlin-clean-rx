@@ -1,5 +1,7 @@
 package com.jcolom.kotlin_arch.domain.model
 
+import com.jcolom.kotlin_arch.domain.command.base.BaseResponse
+
 /*
  * Copyright (C) 2018 Jaume Colom Ferrer
  *
@@ -15,7 +17,7 @@ package com.jcolom.kotlin_arch.domain.model
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class AppVersion {
+class AppVersion : BaseResponse() {
     private var version: String? = null
 
     fun getVersion(): String? {
