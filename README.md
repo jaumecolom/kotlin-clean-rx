@@ -1,8 +1,8 @@
 # Kotlin-Clean-RX
 
-This project has been created to adapt clean architecture with Kotlin. I am developing apps following this project as a template, and I amb obtaining great results.
-I have used the following libraries:
+I created this project to adapt clean architecture with Kotlin. I am developing apps following this project as a template, and I amb obtaining great results.
 
+Used libraries:
 * [RxJava & RxAndroid][1]
 * [Dagger 2][2]
 * [Retrofit2][3]
