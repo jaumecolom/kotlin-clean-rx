@@ -1,7 +1,6 @@
 language: android
 sudo: required
 jdk: oraclejdk8
-dist: trusty
 
 before_cache:
  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -13,7 +12,7 @@ cache:
  - $HOME/.gradle/wrapper/
 
 env:
-matrix:
+ matrix:
  - ANDROID_TARGET=android-27
  global:
  - ADB_INSTALL_TIMEOUT=5 # minutes
@@ -35,7 +34,7 @@ android:
   - chmod +x gradlew
   - yes | sudo sdkmanager --licenses
 
-  before_install:
-    - mkdir "$ANDROID_HOME/licenses" || true
+ before_install:
+  - mkdir "$ANDROID_HOME/licenses" || true
 
 
