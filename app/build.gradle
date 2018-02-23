@@ -9,6 +9,7 @@ android {
         applicationId "com.jcolom.kotlin_arch"
         minSdkVersion 15
         targetSdkVersion 27
+        buildToolsVersion "27.0.1"
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
