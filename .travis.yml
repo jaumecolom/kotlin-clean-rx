@@ -30,10 +30,11 @@ android:
  - platform-tools
  - build-tools-27.0.3
  - android-27
+ - android-22
  - extra-google-m2repository
  - extra-android-m2repository # for design library
  - addon-google_apis-google-19 # google play services
- - sys-img-armeabi-v7a-27
+ - sys-img-armeabi-v7a-22
 
  licenses:
      - android-sdk-license-.+
@@ -43,7 +44,7 @@ android:
   - chmod +x gradlew
   - yes | sudo sdkmanager --licenses
     # Create and start emulator
-  - echo no | android create avd --force -n test -t android-27 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a --skin 480x800
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
