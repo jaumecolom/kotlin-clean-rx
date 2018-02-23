@@ -26,3 +26,6 @@ android:
  - extra-google-m2repository
  - extra-android-m2repository # for design library
  - addon-google_apis-google-19 # google play services
+ 
+ script:
+ - chmod +x ./gradlew build connectedCheck
