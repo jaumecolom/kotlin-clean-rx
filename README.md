@@ -1,4 +1,4 @@
-# Kotlin-Clean-RX  [![Build Status](https://travis-ci.org/jaumecolom/kotlin-clean-rx.svg?branch=master)](https://travis-ci.org/jaumecolom/kotlin-clean-rx)
+# Kotlin-Clean-RX  
 
 I created this project to adapt clean architecture with Kotlin. I am developing apps following this project as a template, and I am obtaining great results. Feel free to contribute, or comment on any improvement :)
 
